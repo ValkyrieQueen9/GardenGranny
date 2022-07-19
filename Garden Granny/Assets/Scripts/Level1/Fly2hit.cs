@@ -9,6 +9,7 @@ public class Fly2hit : MonoBehaviour
     public GameObject flyTarget;
     public int distance;
     private Collider2D targetCollider;
+    public int damage;
 
 
     private void Start()
@@ -41,7 +42,7 @@ public class Fly2hit : MonoBehaviour
                 var healthComponent = flyTarget.GetComponent<Health>();
                 if (healthComponent != null)
                 {
-                    healthComponent.TakeDamage(1);
+                    healthComponent.TakeDamage(damage);
                 }
             }
     }
