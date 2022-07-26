@@ -41,7 +41,7 @@ public class Fly2Move : MonoBehaviour
             health.EnemyDie();
         }
 
-        //Keeps fly moving
+        //Keeps fly moving by continously finding new target
         if (target.gameObject.activeSelf == false & gameManagerScript.gameFail == false)
         {
             index = Random.Range(0, crops.Length);

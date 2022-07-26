@@ -5,15 +5,13 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     //Use this in other scripts to play a sound when something happens - FindObjectOfType<AudioManager>().Play("HitFly");
-    //HitFly is the sound name found in the audioManager 
+    //HitFly sound triggered in Player Attack script. Theme sound triggered on start.
 
     //Use this to stop sounds cutting eachother off - FindObjectOfType<AudioManager>().IsThisSoundPlaying(int soundIndex);
 
-
+    public static AudioManager instance;
     public Sound[] sounds;
     private AudioSource soundPlaying;
-
-    public static AudioManager instance;
 
     private void Awake()
     {

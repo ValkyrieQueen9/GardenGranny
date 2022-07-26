@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-
+    public bool allWavesComplete = false;
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
+    //Wave specs changed in inspector
     [System.Serializable]
    public class Wave
     {
@@ -18,39 +19,33 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    private int nextWave = 0;
 
-    public float timeBetweenWaves = 1f;
+    public float timeBetweenWaves; //removed =1f
     public float waveCountdown;
 
-    private float searchCountdown = 1f;
+    public GameManager gameManagerScript;
+    public Score scoreScript;
 
-    private SpawnState state = SpawnState.COUNTING;
-
+    [Header("Wave Texts")]
     public bool wave1PopUp = false;
     public bool wave2PopUp = false;
     public bool wave3PopUp = false;
     public bool wave4PopUp = false;
     public bool wave5PopUp = false;
 
-    private GameObject scoreObj;
-    private Score scoreScript;
+    private int nextWave = 0;
+    private float searchCountdown = 1f;
 
-    private GameObject gameManagerObj;
-    private GameManager gameManagerScript;
-
+    private SpawnState state = SpawnState.COUNTING;
+    
     private void Start()
     {
-        gameManagerObj = GameObject.FindGameObjectWithTag("GameManager");
-        gameManagerScript = gameManagerObj.GetComponent<GameManager>();
-
-        scoreScript = FindObjectOfType<Score>();
-
         waveCountdown = timeBetweenWaves;
     }
 
     private void Update()
     {
+        //Checks if all enemies are gone per wave.
         if(state == SpawnState.WAITING)
         {
             if (!EnemyIsAlive())
@@ -63,6 +58,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
+        //Starts next wave when ready
         if (waveCountdown <= 0)
         {
             if(state != SpawnState.SPAWNING)
@@ -88,7 +84,7 @@ public class WaveSpawner : MonoBehaviour
                 if (nextWave == 4)
                 {
                     wave5PopUp = true;
-                }
+                } 
             }
         }
         else
@@ -107,7 +103,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave + 1 > waves.Length - 1)
         {
-            gameManagerScript.gameWin = true;
+            allWavesComplete = true;
         }
         else
         {

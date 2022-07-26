@@ -12,7 +12,7 @@ public class HealthBoost : MonoBehaviour
             var healthComponent = collision.GetComponent<Health>();
             if (healthComponent != null)
             {
-                healthComponent.Heal(5);
+                healthComponent.currentHealth = healthComponent.maxHealth;
 
                 this.gameObject.SetActive(false);
             }

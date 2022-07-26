@@ -4568,12 +4568,6 @@ MonoBehaviour:
     pitch: 1.23
     source: {fileID: 0}
     loop: 0
-  - name: FlyDeath
-    clip: {fileID: 8300000, guid: 3993e87628763794589a5ecf16815aa4, type: 3}
-    volume: 0.506
-    pitch: 1.23
-    source: {fileID: 0}
-    loop: 0
 --- !u!4 &229821410
 Transform:
   m_ObjectHideFlags: 0
@@ -13390,6 +13384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80fbd9e683ac3b4581024ce8ff10af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allWavesComplete: 0
   waves:
   - name: Bug Invasion 1
     enemy: {fileID: 6435569522249306121, guid: 97725763987a74148951906e9e6845f1, type: 3}
@@ -13413,6 +13408,8 @@ MonoBehaviour:
     rate: 2
   timeBetweenWaves: 5
   waveCountdown: 0
+  gameManagerScript: {fileID: 1754669363}
+  scoreScript: {fileID: 1472242371}
   wave1PopUp: 0
   wave2PopUp: 0
   wave3PopUp: 0
@@ -15658,7 +15655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  animator: {fileID: 0}
+  enemyAnimation: {fileID: 0}
   playerAnimation: {fileID: 0}
 --- !u!114 &1673312963
 MonoBehaviour:
@@ -15678,7 +15675,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  attackDamage: 7
+  attackDamage: 6
 --- !u!1 &1679146689
 GameObject:
   m_ObjectHideFlags: 0
@@ -16552,6 +16549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218b2489235eab54ea6b777a231c9534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveSpawnerScript: {fileID: 1260803901}
+  scoreScript: {fileID: 1472242371}
   gameWin: 0
   gameFail: 0
   endOfGame: 0

@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Fly2hit : MonoBehaviour
 {
-    private Collider2D collision;
-    private bool IsMoving2;
     public GameObject flyTarget;
     public int distance;
-    private Collider2D targetCollider;
     public int damage;
-
 
     private void Start()
     {
         Application.targetFrameRate = 30;
-
     }
 
+    //Player takes damage if fly collides with them.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -30,8 +26,7 @@ public class Fly2hit : MonoBehaviour
         }
     }
 
-
-    // TRYING TO STOP THE BUG FROM HITTING WHILE MOVING
+    //Stops the bug from damaging crops while moving.
     private void Update()
     {
         flyTarget = GetComponent<Fly2Move>().target;

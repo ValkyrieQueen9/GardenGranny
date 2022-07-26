@@ -6,44 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject[] enemies;
+    public WaveSpawner waveSpawnerScript;
+    public Score scoreScript;
+
+    [Header("Game Results")]
+    public bool gameWin = false;
+    public bool gameFail = false;
+    public bool endOfGame = false;
+
     private GameObject[] crops;
-
-    public bool gameWin = false; //WaveSpawner can change it - WaveText uses it ---- Add new gameWin true when check if finished
-
-    public bool gameFail = false; //Changed here, used by fly2move, scene changer and waveText
-
-    public bool endOfGame = false; //game end either way - use in gameFail and gameWin
-
-    private GameObject waveSpawnerObj;
-    private WaveSpawner waveSpawnerScript;
-
-    private Score scoreScript;
-    private SceneChanger sceneChanger;
-
     private int runOnce = 0;
-
+    //private bool allDisabled = false;
 
     void Start()
     {
-        scoreScript = FindObjectOfType<Score>();
-
-        waveSpawnerObj = GameObject.FindGameObjectWithTag("Spawner");
-        waveSpawnerScript = waveSpawnerObj.GetComponent<WaveSpawner>();
-
         crops = GameObject.FindGameObjectsWithTag("Crop");
     }
 
     void Update()
     {
-       
-        //GameWin Check
-        if (gameWin == true)
-            {
-                endOfGame = true;
-            }
-
-
         //Sets gameFail as true when all crops are inactive or "killed"
         if(SceneManager.GetActiveScene().buildIndex != 0)
         {
@@ -51,7 +32,7 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < crops.Length; i++)
             {
-                if (crops[i].activeSelf) 
+                if (crops[i].activeSelf)
                     { 
                         allDisabled = false; break; 
                     }
@@ -63,18 +44,28 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
-
         //GameFail Check
         if (gameFail == true & runOnce == 0)
         {
-            Debug.Log("Game Manager Game over");
+            Debug.Log("Game Over - FAIL");
             runOnce ++;
             endOfGame = true;
         }
 
-        //EndofGame control here? currently in wavespawner and used by score
-    
+        //Sets gameWin when all waves are complete
+        if(waveSpawnerScript.allWavesComplete) //will be used by score script
+        {
+            gameWin = true;
+        }
+
+        //GameWin Check
+        if (gameWin == true & runOnce == 0)
+        {
+            Debug.Log("Game Over - WIN");
+            runOnce++;
+            endOfGame = true;
+        }
+
     }
 
 }
