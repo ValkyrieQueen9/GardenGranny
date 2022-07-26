@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Animator animator;
-
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange;
     public LayerMask enemyLayers;
-
-    public int attackDamage = 40;
+    public int attackDamage;
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
            Attack();
@@ -35,13 +31,6 @@ public class PlayerAttack : MonoBehaviour
             }
             
         }
-    }
-
- void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
    
 }

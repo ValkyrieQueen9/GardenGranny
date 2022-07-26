@@ -5,47 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    private GameObject scoreGameObj;
-    public static bool endOfGame2;
-    private int runOnce = 0;
-
-    public GameObject sceneTransitions;
+    public float tranTime = 1f;
+    
+    [Header("Scripts")]
     public Transitions transitionsScript;
-    public int sceneIndex;
-
-    private GameObject transitionGameObj;
     public Animator transitionAnim;
-    public string transitionTrigger;
-
-    public static bool fromEndGame = false;
-    public static bool fromStartGame = false;
-
-    public static bool winEnd;
-    public static bool failEnd;
-
-    public GameObject gameManager;
     public GameManager gameManagerScript;
 
-    public float tranTime = 1f;
+    public static bool fromEndGame = false;
 
     public static SceneChanger instance;
 
+    private int runOnce = 0;
 
     void Start()
     {
-
-        scoreGameObj = GameObject.FindGameObjectWithTag("Score");
-
-        //sceneTransitions = GameObject.Find("SceneTransitions");
-        //transitionsScript = sceneTransitions.GetComponent<Transitions>();
-       
-
-        transitionGameObj = GameObject.Find("Transition");
-        transitionAnim = transitionGameObj.GetComponent<Animator>();
-
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
-        gameManagerScript = gameManager.GetComponent<GameManager>();
-
+        //Avoids duplicate scripts in a scene
         if (instance == null)
         {
             instance = this;
@@ -56,30 +31,25 @@ public class SceneChanger : MonoBehaviour
             Debug.Log("Destroyed " + this.name);
             return;
         }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
 
     void Update()
     {
-        sceneTransitions = GameObject.Find("SceneTransitions");
-        transitionsScript = sceneTransitions.GetComponent<Transitions>();
-
-        //Maybe for different end menu text
-        winEnd = gameManagerScript.gameWin;
-        failEnd = gameManagerScript.gameFail;
-
+        //Changes scene when game ends
         if (gameManagerScript.endOfGame == true & runOnce == 0)
         {
             runOnce++;
             fromEndGame = true;
-            Debug.Log("End of Game is called! ");
+            Debug.Log("Changing Scene...");
             StartCoroutine(WaitForLongPopUp(tranTime));
         }
 
     }
 
-        //Give time for Win and Fail Text to popup
+        //Gives time for Win and Fail Text to popup
         IEnumerator WaitForLongPopUp(float tranTime)
         {
             yield return new WaitForSeconds(2f);

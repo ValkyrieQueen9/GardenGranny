@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private GameObject[] crops;
     private int runOnce = 0;
-    //private bool allDisabled = false;
 
     void Start()
     {

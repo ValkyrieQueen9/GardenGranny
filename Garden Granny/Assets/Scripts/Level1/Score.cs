@@ -7,45 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    public int playerScore;
-    public TextMeshProUGUI scoreText;
+    public GameManager gameManagerScript;
+
+    [Header("Player Score")]
     public int enemiesKilled;
     public int cropsKilled;
-
-    public bool endOfGame;
-
+    public int playerScore;
+    
     private int enemiesPoints;
     private int cropsPoints;
 
-    private GameObject gameManagerObj;
-    private GameManager gameManagerScript;
-
-    //public string nextScene;
-    //public GameObject gameObjectToSend;
-
     private void Start()
     {
-        endOfGame = false;
-
         enemiesKilled = 0;
         cropsKilled = 0;
-
-        gameManagerObj = GameObject.FindGameObjectWithTag("GameManager");
-        gameManagerScript = gameManagerObj.GetComponent<GameManager>();
     }
-
 
     void Update()
     {
         if (gameManagerScript.endOfGame == true)
         {
-            enemiesPoints = enemiesKilled * 100;
-            cropsPoints = cropsKilled * 50;
+            enemiesPoints = enemiesKilled * 50;
+            cropsPoints = cropsKilled *20;
 
-            playerScore = enemiesPoints;
-            playerScore -= cropsPoints;
-
-            //scoreText.text = playerScore.ToString();
+            playerScore = enemiesPoints - cropsPoints;
 
        }
     }

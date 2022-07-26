@@ -5,31 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-
-    public GameObject scenesGameObj;
-    private SceneChanger sceneChangerScript;
-
-    public GameObject gameManager;
-    public GameManager gameManagerScript;
-
-    public GameObject sceneTransitions;
     public Transitions transitionsScript;
-    public int sceneIndex;
-
     public bool fromStartGame = false;
-
-    private void Start()
-    {
-        sceneChangerScript = scenesGameObj.GetComponent<SceneChanger>();
-
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
-        gameManagerScript = gameManager.GetComponent<GameManager>();
-
-        // transitionsScript = sceneTransitions.GetComponent<Transitions>();
-    }
 
     void Update()
     {
@@ -46,12 +25,15 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    //Resume Game from pause menu and begin gameplay
    public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
+
+    //Activate pause menu overlay and stop gameplay
    void Pause()
     {
         pauseMenuUI.SetActive(true);
@@ -59,13 +41,12 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
+    //Load start screen
     public void LoadMenu()
     {
         GameIsPaused = false;
-        //gameManagerScript.endOfGame = true;
         transitionsScript.LoadNextScene(1f);
         Time.timeScale = 1f;
-        SceneChanger.fromStartGame = true;
     }
 
     

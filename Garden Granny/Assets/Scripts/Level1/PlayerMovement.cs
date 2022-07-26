@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Create variables
-    Vector2 moveVector;
-    public float speed;
-    private Rigidbody2D rb;
-
     public Animator animator;
+    public float speed;
 
-  
-    // Start is called before the first frame update
+    private Rigidbody2D rb;
+    private Vector2 moveVector;
+    
     void Start()
     { 
-        //define variables
-        rb = this.GetComponent<Rigidbody2D>();
+       rb = this.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
        moveVector = Vector2.zero;
-        //if statements for key presses
-        
-
 
         //BACKWARD W
         if (Input.GetKey(KeyCode.W))
@@ -117,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Hit", false);
         }
-
 
         rb.transform.position += new Vector3(moveVector.x * speed, moveVector.y * speed, 0) * speed * Time.deltaTime;
     }
