@@ -481,7 +481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6637,7 +6637,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6709,7 +6709,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8619,7 +8619,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3710624075381905463, guid: 2e861c3c08a7f9b49ab4d24b2720c5ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9891,8 +9891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ba0eae383604e43bde8e9f088053f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  mainMenuScript: {fileID: 0}
   readyText: {fileID: 890193810}
 --- !u!1 &883686187
 GameObject:
@@ -16301,13 +16299,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d520d7f982e0148bd893d76849f7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text1: {fileID: 1810260777}
-  text2: {fileID: 242552988}
-  text3: {fileID: 1736305851}
-  text4: {fileID: 2113453218}
-  text5: {fileID: 1807168126}
+  waveSpawner: {fileID: 1260803901}
+  gameManagerScript: {fileID: 1754669363}
   winText: {fileID: 1120176021}
   failText: {fileID: 1060984529}
+  allwavetext:
+  - {fileID: 1810260777}
+  - {fileID: 242552988}
+  - {fileID: 1736305851}
+  - {fileID: 2113453218}
+  - {fileID: 1807168126}
 --- !u!4 &1755271442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6727260469500313257, guid: 70764866651f8114cbae14e8ed4da4c6, type: 3}
@@ -19427,7 +19428,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8714564620309795609, guid: bffbc2389320ab64e8a5737531ab0843, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8714564620309795609, guid: bffbc2389320ab64e8a5737531ab0843, type: 3}
       propertyPath: m_LocalScale.x
@@ -19485,6 +19486,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1673312955}
+    - target: {fileID: 8714564620309795814, guid: bffbc2389320ab64e8a5737531ab0843, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1673312962}
     - target: {fileID: 8714564620309795814, guid: bffbc2389320ab64e8a5737531ab0843, type: 3}
       propertyPath: objectToSpawn
       value: 

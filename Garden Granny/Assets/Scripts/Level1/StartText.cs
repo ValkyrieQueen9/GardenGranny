@@ -7,10 +7,6 @@ using UnityEngine.UI;
 
 public class StartText : MonoBehaviour
 {
-
-    public GameObject mainMenu;
-    public MainMenu mainMenuScript;
-
     public GameObject readyText;
 
     private int runOnce = 0;
@@ -18,16 +14,13 @@ public class StartText : MonoBehaviour
     private void Start()
     {
         readyText.SetActive(false);
-
-        mainMenu = GameObject.Find("MainMenu");
     }
 
     private void Update()
     {
-
+        //If the game is starting through main menu, trigger "Get Ready" text
         if (MainMenu.fromStartGame == true & runOnce == 0)
         {
-            Debug.Log("FromStartGame is true");
             StartCoroutine(PopUp(readyText));
             runOnce++;
         }

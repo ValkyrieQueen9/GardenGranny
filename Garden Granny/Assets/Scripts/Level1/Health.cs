@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     public Animator enemyAnimation;
     public Animator playerAnimation;
 
-
     private PlayerMovement movement;
     private GameObject player;
     private PlayerAttack playerAttack;
