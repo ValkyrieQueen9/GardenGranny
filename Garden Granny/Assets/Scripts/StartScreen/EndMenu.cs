@@ -7,32 +7,26 @@ using UnityEngine.UI;
 
 public class EndMenu : MonoBehaviour
 {
+    [Header("Player Score")]
     public TextMeshProUGUI scoreNum;
     public string playerScore;
-    public Score scoreScript;
 
-    private GameObject scenesObj;
-    private SceneChanger sceneChanger;
+    private Score scoreScript;
     private int runOnce = 0;
 
-    public GameObject scoreCanvas;
-    private Canvas scoreCanvasComp;
-
+    private void Start()
+    {
+        scoreScript = FindObjectOfType<Score>();
+    }
 
     private void Update()
     {
-        scenesObj = GameObject.Find("Scenes");
-        sceneChanger = scenesObj.GetComponent<SceneChanger>();
-
+        //If the game is over via win or lose, show player score
         if (SceneChanger.fromEndGame == true & runOnce == 0)
         {
-            scoreScript = FindObjectOfType<Score>();
-
-            runOnce++;
             playerScore = scoreScript.playerScore.ToString();
             scoreNum.text = playerScore;
-
-            //SceneChanger.fromEndGame = false;
+            runOnce++;
         }
 
 

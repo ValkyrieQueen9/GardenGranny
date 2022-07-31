@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Sets gameWin when all waves are complete
-        if(waveSpawnerScript.allWavesComplete) //will be used by score script
+        if(waveSpawnerScript.allWavesComplete)
         {
             gameWin = true;
         }

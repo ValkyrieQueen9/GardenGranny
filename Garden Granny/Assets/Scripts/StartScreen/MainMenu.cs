@@ -11,18 +11,14 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+       //Begins game - used with StartButton
        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
        fromStartGame = true;
     }
 
-    public void ExitGame()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
-    }
-
     IEnumerator LoadLevel (int levelIndex)
     {
+        //Triggers next scene with a smooth fade transition
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);

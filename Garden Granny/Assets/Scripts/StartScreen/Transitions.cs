@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Transitions : MonoBehaviour
 {
-    public int sceneIndex;
     public Animator transition;
-    public float transitionTime = 1f;
 
-
+    //Triggers scene change
     public void LoadNextScene(float tranTime)
     {
         StartCoroutine(LoadLevel(tranTime));
     }
 
+    //Changes scene with smooth fade transition
     IEnumerator LoadLevel(float tranTime)
     {
         transition.SetTrigger("Start");

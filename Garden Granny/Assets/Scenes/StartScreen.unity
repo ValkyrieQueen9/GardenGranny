@@ -2699,7 +2699,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endMenu: {fileID: 2010016622}
   mainMenu: {fileID: 380382083}
-  scoreCanvas: {fileID: 0}
 --- !u!1 &1757004555
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,8 +3436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreNum: {fileID: 119174501}
   playerScore: 
-  scoreScript: {fileID: 0}
-  scoreCanvas: {fileID: 0}
 --- !u!95 &2010016625
 Animator:
   serializedVersion: 3
